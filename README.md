@@ -1,5 +1,7 @@
 # napkin
 
+An online back-of-the-envelope calculator for some quick calculation.
+
 ## Project setup
 ```
 npm install
