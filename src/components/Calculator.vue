@@ -12,21 +12,25 @@ import * as mexp from 'math-expression-evaluator'
 
 function expand(expression) {
   const replaceMap = {
-    'k': '000',
-    'w': '0 000',
-    'm': '000 000',
-    'y': '00 000 000',
-    'b': '000 000 000'
+    'p': '0.01',
+    'h': '100',
+    'k': '1 000',
+    'w': '10 000',
+    'm': '1000 000',
+    'y': '100 000 000',
+    'b': '1 000 000 000'
   }
+  const units = Object.keys(replaceMap).join('')
+  expression = expression.replace(new RegExp(`([0-9]+(\\.[0-9]*)?[\\s${units}]*)`, 'g'), '($1)')
   for (const key in replaceMap) {
     const element = replaceMap[key];
-    expression = expression.replace(new RegExp(key, 'g'), element)
+    expression = expression.replace(new RegExp(key, 'g'), `* ${element}`)
   }
   return expression
 }
 
 export default {
-  name: 'HelloWorld',
+  name: 'Calculator',
   data: function() {
     return {
       expression: '',
