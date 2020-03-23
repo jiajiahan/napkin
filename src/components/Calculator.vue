@@ -42,7 +42,13 @@ export default {
   },
   methods: {
     calc: function() {
-      this.$data.result = mexp.eval(expand(this.$data.expression)).toLocaleString()
+      var result = mexp.eval(expand(this.$data.expression))
+      if (result > 1000) {
+        result = Math.round(result)
+      } else if (result > 1 && !Number.isInteger(result)) {
+        result = result.toFixed(2)
+      }
+      this.$data.result = result.toLocaleString()
     }
   }
 }
