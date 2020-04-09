@@ -38,9 +38,9 @@ function toEasyResults(result) {
   var results = []
   for (const key in replaceMap) {
     const element = replaceMap[key]
-    const num = mexp.eval(`${result} / ${element}`).toPrecision(2)
+    const num = mexp.eval(`${result} / ${element}`).toPrecision(3)
     const unit = key == 'p' ? '%' : key
-    if (num >= 1 && num < 100) {
+    if (num >= 1 && num < 1000) {
       results.push(`${num} ${unit}`)
     }
   }
